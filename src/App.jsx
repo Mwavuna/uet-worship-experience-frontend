@@ -259,6 +259,7 @@ function SongForm({ heading, submitLabel, initial, sets, onSubmit, onCancel }) {
       await onSubmit(f);
     } catch (err) {
       setError(err.message);
+    } finally {
       setBusy(false);
     }
   }
@@ -321,6 +322,12 @@ function SongDetail({ song, onToggleDone, onSave, onEdit, onDelete, onBack }) {
       setStatus("Not saved: " + e.message);
     }
   }, [song.id, onSave]);
+
+  useEffect(() => {
+    setText(song.lyrics);
+    saved.current = song.lyrics;
+    setStatus("");
+  }, [song.id, song.lyrics]);
 
   // Autosave shortly after typing stops
   useEffect(() => {
