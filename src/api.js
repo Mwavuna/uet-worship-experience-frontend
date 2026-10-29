@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://uet-worship-experience-backend.onrender.com";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 let code = "";
 try {
